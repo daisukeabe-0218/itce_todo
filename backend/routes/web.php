@@ -22,3 +22,7 @@ Route::post('/task', function (Request $request) {
 Route::delete('/task/{task}', function () {
     //
 });
+
+Route::get('/', function () {
+    return view('tasks');
+});
