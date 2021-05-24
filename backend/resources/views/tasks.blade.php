@@ -24,6 +24,29 @@
        </form>
      </div>
    </div>
+   <div class="card">
+     <div class="card-header">タスク一覧</div>
+     <div class="card-body">
+       @if (count($tasks) > 0)
+       <table class="table table-striped">
+         <tbody>
+           @foreach ($tasks as $task)
+           <tr>
+             <td>{{ $task->name }}</td>
+             <td>
+               <form method="POST" action="{{ url('/task/' . $task->id) }}">
+                 @csrf
+                 @method('DELETE')
+                 <button type="submit" class="btn btn-outline-danger" style="width: 100px;"><i class="far fa-trash-alt"></i> 削除</button>
+               </form>
+             </td>
+           </tr>
+           @endforeach
+         </tbody>
+       </table>
+       @endif
+     </div>
+   </div>
  </div>
 </body>
 </html>
