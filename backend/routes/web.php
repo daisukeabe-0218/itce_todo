@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Task;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('tasks', [
-        'tasks' => App\Task::latest()->get()
+        'tasks' => App\Models\Task::latest()->get()
     ]);
 });
 Route::post('/task', function (Request $request) {
@@ -35,6 +36,7 @@ Route::post('/task', function (Request $request) {
     $task->save();
     return redirect('/');
 });
-Route::delete('/task/{task}', function () {
-    //
+Route::delete('/task/{task}', function (Task $task) {
+    $task->delete();
+    return redirect('/');
 });
