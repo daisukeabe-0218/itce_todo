@@ -13,7 +13,7 @@ use App\Models\Task;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// ユーザーがページを表示するときは基本的にgetの方
 Route::get('/', function () {
     return view('tasks', [
         'tasks' => App\Models\Task::latest()->get()
@@ -31,7 +31,11 @@ Route::post('/task', function (Request $request) {
             'name.max' => '255文字以内で入力してください。'
         ]
     );
+    // インスタンス作成
     $task = new Task();
+
+    //Inputタグのname属性がnameの場合 $requestでnameの値を受け取る
+    //モデルインスタンスのname属性に代入
     $task->name = request('name');
     $task->save();
     return redirect('/');

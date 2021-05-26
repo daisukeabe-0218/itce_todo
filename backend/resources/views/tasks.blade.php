@@ -18,8 +18,9 @@
            <input type="text" name="name" class="form-control">
            @if ($errors->has('name'))
            <p class="text-danger">{{ $errors->first('name') }}</p>
+
            @endif
-           <button type="submit" class="btn btn-outline-info mt-2"><i class="fas fa-plus fa-lg mr-2"></i>追加</button>
+           <button type="submit"  class="btn btn-outline-info mt-2"><i class="fas fa-plus fa-lg mr-2"></i>追加</button>
          </div>
        </form>
      </div>
@@ -33,9 +34,14 @@
            @foreach ($tasks as $task)
            <tr>
              <td>{{ $task->name }}</td>
+             <td>{{ $task->created_at }}</td>
              <td>
                <form method="POST" action="{{ url('/task/' . $task->id) }}">
                  @csrf
+                 <div>
+                    <?php
+                    ?>
+                </div>
                  @method('DELETE')
                  <button type="submit" class="btn btn-outline-danger" style="width: 100px;"><i class="far fa-trash-alt"></i> 削除</button>
                </form>
