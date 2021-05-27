@@ -16,6 +16,7 @@
          @csrf
          <div class="form-group">
            <input type="text" name="name" class="form-control">
+           <input type="datetime-local" name="deadline_at" class="form-control">
            @if ($errors->has('name'))
            <p class="text-danger">{{ $errors->first('name') }}</p>
 
@@ -33,8 +34,11 @@
          <tbody>
            @foreach ($tasks as $task)
            <tr>
+             <td>{{ gettype($task->deadline_at ) }}</td>
+             <td>{{ gettype($task->created_at ) }}</td>
              <td>{{ $task->name }}</td>
-             <td>{{ $task->created_at->format('Y/m/d H:i') }}</td>
+             <td>{{ $task->created_at ->format('Y/m/d H:i') }}</td>
+             <td>{{ $task->deadline_at ->format('Y/m/d H:i')}}</td>
              <td>
                <form method="POST" action="{{ url('/task/' . $task->id) }}">
                  @csrf

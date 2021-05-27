@@ -37,6 +37,7 @@ Route::post('/task', function (Request $request) {
     //Inputタグのname属性がnameの場合 $requestでnameの値を受け取る
     //モデルインスタンスのname属性に代入
     $task->name = request('name');
+    $task->deadline_at = request('deadline_at');
     $task->save();
     return redirect('/');
 });

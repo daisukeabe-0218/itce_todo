@@ -13,10 +13,8 @@ class AddTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->dateTime('time');
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->dateTime('deadline_at', $precision = 0);
         });
     }
 
