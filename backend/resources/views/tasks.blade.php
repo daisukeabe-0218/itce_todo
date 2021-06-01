@@ -45,6 +45,7 @@
             <td class=“dead”>期限切れ</td>
             @endif
              <td>
+                 <a href="/task/{{$task->id}}">編集</a>
                <form method="POST" action="{{ url('/task/' . $task->id) }}">
                  @csrf
                  <div>
